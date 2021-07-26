@@ -78,6 +78,10 @@ class BoursoramaApi {
     await this.#page.waitForFunction(() => window.BRS_CONFIG?.USER_HASH);
   }
 
+  getBrowser() {
+	  return this.#browser;
+  }
+
   /**
    * Returns the accounts
    * @return {Promise<Array<{id: string, label: string, balance: number}>>}
