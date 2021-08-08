@@ -86,7 +86,7 @@ class BoursoramaApi {
    * @param {string} password
    */
   disconnect() {
-    await this.#page.goto('https://clients.boursorama.com/se-deconnecter');
+    return this.#page.goto('https://clients.boursorama.com/se-deconnecter');
   }
 
   getBrowser() {
