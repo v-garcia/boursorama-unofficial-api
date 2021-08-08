@@ -1,7 +1,7 @@
-import { fileURLToPath } from "url";
+import { fileURLToPath } from 'url';
 import Papa from 'papaparse';
-import path from "path";
-import fs from "fs";
+import path from 'path';
+import fs from 'fs';
 
 class Utils {
   static dirname() {
@@ -10,7 +10,7 @@ class Utils {
   }
 
   static moneyStrToNumber(str) {
-    return str && Number(str.replace(/\s|€/g, "").replace(",", "."));
+    return str && Number(str.replace(/\s|€/g, '').replace(',', '.'));
   }
 
   static waitForFile({ path, timeout = 30000, ...opts }, pred) {
@@ -23,7 +23,7 @@ class Utils {
       });
       setTimeout(() => {
         watcher.close();
-        reject(new Error("Watcher timed out"));
+        reject(new Error('Watcher timed out'));
       }, timeout);
     });
   }
@@ -34,7 +34,7 @@ class Utils {
       const csvData = [];
       Papa.parse(file, {
         ...options,
-        step: function(result) {
+        step: function (result) {
           csvData.push(result.data);
         },
         complete: (results, file) => {
@@ -42,17 +42,18 @@ class Utils {
         },
         error: () => {
           reject(new Error(`Error reading file ${filepath}`));
-        }
+        },
       });
     });
   };
 
-  static unlink = (path) => new Promise((resolve, reject) => {
-    fs.unlink(path, (err) => {
-    if (err) reject(err);
-    resolve(path);
-  });
-});
+  static unlink = (path) =>
+    new Promise((resolve, reject) => {
+      fs.unlink(path, (err) => {
+        if (err) reject(err);
+        resolve(path);
+      });
+    });
 }
 
 export default Utils;
