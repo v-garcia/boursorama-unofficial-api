@@ -13,7 +13,7 @@ class Utils {
     return str && Number(str.replace(/\s|€/g, '').replace(',', '.'));
   }
 
-  static waitForFile({ path, timeout = 30000, ...opts }, pred) {
+  static waitForFile({ path, timeout = 240000, ...opts }, pred) {
     return new Promise((resolve, reject) => {
       const watcher = fs.watch(path, opts, (event, fileName) => {
         if (pred(event, fileName)) {
