@@ -150,6 +150,7 @@ class BoursoramaApi {
     let movements = await Utils.readCsvFile(filePath, {
       header: true,
       encoding: 'latin1',
+      delimiter: ';',
     });
     await Utils.unlink(filePath);
 
