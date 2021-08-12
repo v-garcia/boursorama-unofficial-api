@@ -32,8 +32,12 @@ class BoursoramaApi {
     this.#downloadPath = downloadPath;
   }
 
-  async init() {
-    this.#browser = await puppeteer.launch({ headless: true });
+  /**
+   * Initiate browser & page instances
+   * @param {object} Pupeteer start params
+   */
+  async init(puppeteerArgs) {
+    this.#browser = await puppeteer.launch({ headless: true, ...puppeteerArgs });
     this.#page = await this.#browser.newPage();
     await this.#page._client.send('Page.setDownloadBehavior', {
       behavior: 'allow',
