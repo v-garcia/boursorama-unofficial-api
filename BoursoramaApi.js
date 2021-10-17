@@ -69,8 +69,11 @@ class BoursoramaApi {
 
     // Click to each digit according to the password
 
+    console.log(`debug password ${password}`);
     for (const digit of password) {
+      console.log(`debug digit ${digit}`);
       const svgImage = BoursoramaApi.#PASSWORD_DIGITS_IMAGES[digit];
+      console.log(`debug svgImage ${svgImage}`);
       await this.#page.click(`img[src="${svgImage}"]`);
     }
 
