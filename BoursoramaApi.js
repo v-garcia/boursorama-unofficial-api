@@ -159,7 +159,7 @@ class BoursoramaApi {
       encoding: 'latin1',
       delimiter: ';',
     });
-    await Utils.unlink(filePath);
+    //await Utils.unlink(filePath);
 
     // Better handle numeric values & camelCase accountbalance property
     movements = movements.map(({ amount, accountbalance, ...obj }) => ({
