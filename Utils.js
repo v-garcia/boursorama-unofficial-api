@@ -30,14 +30,15 @@ class Utils {
 
   static readCsvFile = (filepath, options) => {
     return new Promise((resolve, reject) => {
-      const file = fs.createReadStream(filepath);
+      const readerStream = fs.createReadStream(filepath);
+      readerStream.setEncoding("UTF8");
       const csvData = [];
-      Papa.parse(file, {
+      Papa.parse(readerStream, {
         ...options,
         step: function (result) {
           csvData.push(result.data);
         },
-        complete: (results, file) => {
+        complete: (results, readerStream) => {
           resolve(csvData);
         },
         error: () => {
