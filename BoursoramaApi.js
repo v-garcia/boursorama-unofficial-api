@@ -54,7 +54,10 @@ class BoursoramaApi {
     await this.#page.goto('https://clients.boursorama.com/connexion');
 
     // Accept the cookies
-    await this.#page.click('#didomi-notice-agree-button');
+    if (await this.#page.$('#didomi-notice-agree-button')) {
+        await this.#page.click('#didomi-notice-agree-button');
+    }
+    
 
     // Enter the client number
     await this.#page.focus('#form_clientNumber');
