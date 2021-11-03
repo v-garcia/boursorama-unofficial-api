@@ -53,11 +53,8 @@ class BoursoramaApi {
   async connect(clientNumber, password) {
     await this.#page.goto('https://clients.boursorama.com/connexion');
 
-    // Accept the cookies
-    if (await this.#page.$('#didomi-notice-agree-button')) {
-        await this.#page.click('#didomi-notice-agree-button');
-    }
-    
+    // Go through cookies wall
+    await this.#page.click('.didomi-continue-without-agreeing');
 
     // Enter the client number
     await this.#page.focus('#form_clientNumber');
