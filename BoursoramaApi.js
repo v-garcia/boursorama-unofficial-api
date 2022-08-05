@@ -154,6 +154,7 @@ class BoursoramaApi {
     const filePath = path.join(this.#downloadPath, downloadedFile);
     let movements = await Utils.readCsvFile(filePath, {
       header: true,
+      transformHeader: s => s.trim(),
       encoding: 'latin1',
       delimiter: ';',
     });
