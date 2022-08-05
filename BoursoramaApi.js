@@ -54,8 +54,9 @@ class BoursoramaApi {
     await this.#page.goto('https://clients.boursorama.com/connexion');
 
     // Go through cookies wall
-    await this.#page.click('.didomi-continue-without-agreeing');
-
+    if ((await this.#page.$(".didomi-continue-without-agreeing")) !== null) {
+      await this.#page.click('.didomi-continue-without-agreeing');
+    }
     // Enter the client number
     await this.#page.focus('#form_clientNumber');
     await this.#page.keyboard.type(clientNumber);
