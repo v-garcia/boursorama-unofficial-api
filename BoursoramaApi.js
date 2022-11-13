@@ -63,6 +63,8 @@ class BoursoramaApi {
 
     // Click on the validation button
     await this.#page.click('[data-login-id-submit]');
+    await this.#page.waitForTimeout(200); // Hack for click button has no effect
+    await this.#page.click('[data-login-id-submit]');
 
     // Wait for digit keypad apparition
     await this.#page.waitForSelector('[data-matrix]', { visible: true });
